@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.azaza.by/drugs"
+           elementFormDefault="qualified">
+    <xs:element name="drugs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="drug" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="pharm" type="xs:string"/>
+                            <xs:element name="analogs" type="LIST_TYPE"/>
+                            <xs:element name="versions" type="LIST_TYPE_VERSIONS"/>
+                        </xs:sequence>
+                        <xs:attribute name="group" type="druggroup"/>
+                        <xs:attribute name="id" type="xs:int"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="LIST_TYPE">
+        <xs:sequence>
+            <xs:element name="analog" type="xs:string" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LIST_TYPE_VERSIONS">
+        <xs:sequence>
+            <xs:element name="version" type="drugversion" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LIST_TYPE_MANUFACTURERS">
+        <xs:sequence>
+            <xs:element name="manufacturer" type="drugmanufacturer" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:simpleType name="druggroup">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="antibiotic"/>
+            <xs:enumeration value="painkiller"/>
+            <xs:enumeration value="hypnotic"/>
+            <xs:enumeration value="vitamin"/>
+            <xs:enumeration value="antidepressant"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="drugform">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tablets"/>
+            <xs:enumeration value="capsules"/>
+            <xs:enumeration value="powder"/>
+            <xs:enumeration value="drops"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="drugpackagetype">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="box"/>
+            <xs:enumeration value="bottle"/>
+            <xs:enumeration value="shot"/>
+            <xs:enumeration value="flask"/>
+            <xs:enumeration value="spray"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="drugversion">
+        <xs:sequence>
+            <xs:element name="form" type="drugform"/>
+            <xs:element name="manufacturers" type="LIST_TYPE_MANUFACTURERS"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="drugmanufacturer">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="certificate" type="certificate"/>
+            <xs:element name="package" type="drugpackage"/>
+            <xs:element name="dosage" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="certificate">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="dateofissue" type="xs:date"/>
+            <xs:element name="registerorganization" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="drugpackage">
+        <xs:sequence>
+            <xs:element name="type" type="drugpackagetype"/>
+            <xs:element name="number" type="xs:int"/>
+            <xs:element name="price" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

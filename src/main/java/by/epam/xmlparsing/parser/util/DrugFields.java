@@ -6,7 +6,9 @@ public enum DrugFields {
         NAME,
         PHARM,
         ANALOGS,
+        ANALOG,
         VERSIONS,
+        VERSION,
         GROUP,
         ID
 }

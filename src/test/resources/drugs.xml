@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<drugs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.azaza.by/drugs"
+       xsi:schemaLocation="http://www.azaza.by/drugs drugsScheme">
+
+    <drug id="1" group="antibiotic">
+        <name>Ibufen</name>
+        <pharm>Bayer</pharm>
+        <analogs>
+            <analog>Ibuprofen</analog>
+            <analog>Iburofen</analog>
+        </analogs>
+        <versions>
+            <version>
+            <form>tablets</form>
+            <manufacturers>
+                <manufacturer>
+                    <name>Bayer</name>
+                    <certificate>
+                        <id>12354</id>
+                        <dateofissue>2030-09-21</dateofissue>
+                        <registerorganization>Minzdrav</registerorganization>
+                    </certificate>
+                    <package>
+                        <type>box</type>
+                        <number>10</number>
+                        <price>19.99</price>
+                    </package>
+                    <dosage>2</dosage>
+                </manufacturer>
+            </manufacturers>
+            </version>
+        </versions>
+    </drug>
+
+    <drug id="2" group="antibiotic">
+        <name>ACC</name>
+        <pharm>Belmed</pharm>
+        <analogs>
+            <analog>ABB</analog>
+            <analog>ADD</analog>
+        </analogs>
+        <versions>
+            <version>
+            <form>tablets</form>
+            <manufacturers>
+                <manufacturer>
+                    <name>Belmed</name>
+                    <certificate>
+                        <id>6767</id>
+                        <dateofissue>2020-01-01</dateofissue>
+                        <registerorganization>Minzdrav</registerorganization>
+                    </certificate>
+                    <package>
+                        <type>box</type>
+                        <number>30</number>
+                        <price>9.99</price>
+                    </package>
+                    <dosage>3</dosage>
+                </manufacturer>
+            </manufacturers>
+        </version>
+        </versions>
+    </drug>
+</drugs>

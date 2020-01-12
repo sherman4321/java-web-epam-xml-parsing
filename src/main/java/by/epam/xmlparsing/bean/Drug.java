@@ -8,12 +8,23 @@ public class Drug {
     private String pharm;
     private DrugGroup group;
     private List<String> analogs;
-    private Set<DrugVersion> versions;
+    private List<DrugVersion> versions;
 
     public Drug() {
+        analogs = new ArrayList<>();
+        versions = new ArrayList<>();
     }
 
-    public Drug(int id, String name, String pharm, DrugGroup group, List<String> analogs, Set<DrugVersion> versions) {
+    public Drug(int id, String name, String pharm, DrugGroup group) {
+        this.id = id;
+        this.name = name;
+        this.pharm = pharm;
+        this.group = group;
+        analogs = new ArrayList<>();
+        versions = new ArrayList<>();
+    }
+
+    public Drug(int id, String name, String pharm, DrugGroup group, List<String> analogs, List<DrugVersion> versions) {
         this.id = id;
         this.name = name;
         this.pharm = pharm;
@@ -84,6 +95,14 @@ public class Drug {
         this.group = group;
     }
 
+    public String getAnalog(int index) {
+        return analogs.get(index);
+    }
+
+    public void setAnalog(String analog) {
+        analogs.add(analog);
+    }
+
     public List<String> getAnalogs() {
         return new ArrayList<>(analogs);
     }
@@ -92,11 +111,19 @@ public class Drug {
         this.analogs = new ArrayList<>(analogs);
     }
 
-    public Set<DrugVersion> getVersions() {
-        return new HashSet<>(versions);
+    public List<DrugVersion> getVersions() {
+        return new ArrayList<>(versions);
     }
 
-    public void setVersions(Set<DrugVersion> versions) {
-        this.versions = new HashSet<>(versions);
+    public void setVersions(List<DrugVersion> versions) {
+        this.versions = new ArrayList<>(versions);
+    }
+
+    public DrugVersion getVersion(int index) {
+        return versions.get(index);
+    }
+
+    public void setVersion(DrugVersion version) {
+        versions.add(version);
     }
 }
